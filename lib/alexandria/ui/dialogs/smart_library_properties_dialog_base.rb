@@ -355,7 +355,7 @@ module Alexandria
         @calendar_popup.hide_all
         self.modal = true
 
-        GLib::Timeout.add(150) do
+        GLib.timeout_add(GLib::PRIORITY_DEFAULT, 150) do
           # If we set @popup_displayed=false immediately, then a click
           # event on the primary icon of the Entry simultaneous with
           # the focus-out-event of the Calendar causes the Calendar to

@@ -4,7 +4,6 @@
 #
 # See the file README.md for authorship and licensing information.
 
-require 'gdk_pixbuf2'
 require 'alexandria/ui/builder_base'
 require 'alexandria/ui/dialogs/keep_bad_isbn_dialog'
 
@@ -100,18 +99,18 @@ module Alexandria
         # When item is first toggled to "Search" the entry_search
         # field was unselectable. One used to have to click the dialog
         # title bar to be able to focus it again. Putting the GUI
-        # modifications in an GLib::Idle.add block fixed the problem.
+        # modifications in an GLib.idle_add block fixed the problem.
 
         is_isbn = item == @isbn_radiobutton
         if is_isbn
-          GLib::Idle.add do
+          GLib.idle_add do
             @latest_size = @new_book_dialog.size
             @new_book_dialog.resizable = false
             @entry_isbn.grab_focus
             false
           end
         else
-          GLib::Idle.add do
+          GLib.idle_add do
             @new_book_dialog.resizable = true
             @new_book_dialog.resize(*@latest_size) unless @latest_size.nil?
             @entry_search.grab_focus
@@ -173,7 +172,7 @@ module Alexandria
           end
         end
 
-        GLib::Timeout.add(100) do
+        GLib.timeout_add(GLib::PRIORITY_DEFAULT, 100) do
           if @image_error
             image_error_dialog(@image_error).display
           else
@@ -236,7 +235,7 @@ module Alexandria
         @image_thread&.kill
 
         notify_start_add_by_isbn
-        GLib::Idle.add do
+        GLib.idle_add do
           @find_thread = Thread.new do
             log.info { "New @find_thread #{Thread.current}" }
             begin
@@ -254,7 +253,7 @@ module Alexandria
           false
         end
 
-        GLib::Timeout.add(100) do
+        GLib.timeout_add(GLib::PRIORITY_DEFAULT, 100) do
           # This block copies results into the tree view, or shows an
           # error if the search failed.
 
@@ -343,7 +342,7 @@ module Alexandria
         assert_not_exist(library, @entry_isbn.text)
         @button_add.sensitive = false
         notify_start_add_by_isbn
-        GLib::Idle.add do
+        GLib.idle_add do
           @find_thread = Thread.new do
             log.info { "New @find_thread #{Thread.current}" }
             begin
@@ -480,7 +479,7 @@ module Alexandria
       def notify_start_add_by_isbn
         main_progress_bar = MainApp.instance.appbar.children.first
         main_progress_bar.visible = true
-        @progress_pulsing = GLib::Timeout.add(100) do
+        @progress_pulsing = GLib.timeout_add(GLib::PRIORITY_DEFAULT, 100) do
           if @destroyed
             false
           else
@@ -516,7 +515,7 @@ module Alexandria
           if (text = clipboard.wait_for_text)
             if Library.valid_isbn?(text) || Library.valid_ean?(text) ||
                 Library.valid_upc?(text)
-              GLib::Idle.add do
+              GLib.idle_add do
                 @entry_isbn.text = text
                 @entry_isbn.grab_focus
                 @entry_isbn.select_region(0, -1) # select all...

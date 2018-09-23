@@ -4,6 +4,10 @@
 #
 # See the file README.md for authorship and licensing information.
 
+module Gtk
+  load_class :TreeView
+end
+
 module Alexandria
   module EventOverrides
     def ==(obj)
@@ -41,18 +45,22 @@ module Alexandria
       end
     end
 
+    # FIXME: Don't override this method.
     def enable_model_drag_source(start_button_mask, targets, actions)
       super
 
-      @context = Context.new
-      @context.source_start_button_mask = start_button_mask
-      @context.source_targets = Gtk::TargetList.new(targets)
-      @context.source_actions = actions
+      # FIXME: Re-enable or re-implement
+      if false
+        @context = Context.new
+        @context.source_start_button_mask = start_button_mask
+        @context.source_targets = Gtk::TargetList.new(entries)
+        @context.source_actions = actions
 
-      @context.button_press_handler =
-        signal_connect('button_press_event') do |_widget, event, _data|
-          button_press_event(event)
-        end
+        @context.button_press_handler =
+          signal_connect('button-press-event') do |_widget, event, _data|
+            button_press_event(event)
+          end
+      end
     end
 
     def drag_context
@@ -80,7 +88,7 @@ module Alexandria
       if drag_check_threshold(@context.x, @context.y, event.x, event.y)
         stop_drag_check
         paths = []
-        selection.each { |_model, path, _iter| paths << path }
+        selection.selected_each { |_model, path, _iter| paths << path }
         @context.drag_context = drag_begin(@context.source_targets,
                                            @context.source_actions,
                                            @context.pressed_button,
@@ -99,13 +107,13 @@ module Alexandria
         return true
       end
 
-      return false if event.event_type == :'2button_press'
+      return false if event.event_type == Gdk::Event::BUTTON2_PRESS
 
       path, _, cell_x, cell_y = get_path_at_pos(event.x, event.y)
       return false if path.nil?
 
       # call_parent = (event.state.control_mask? or event.state.shift_mask?) or !selected or event.button != 1
-      (call_parent = !selection.path_is_selected?(path)) ||
+      (call_parent = !selection.path_is_selected(path)) ||
         (event.button != 1)
 
       if call_parent
@@ -114,7 +122,7 @@ module Alexandria
         end
       end
 
-      if selection.path_is_selected?(path)
+      if selection.path_is_selected(path)
         @context.pending_event = true
         @context.pressed_button = event.button
         @context.x = event.x

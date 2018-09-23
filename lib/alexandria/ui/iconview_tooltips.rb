@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2007 kksou
 # Copyright (C) 2008,2009 Cathal Mc Ginley
-# Copyright (C) 2011, 2014, 2016 Matijs van Zuijlen
+# Copyright (C) 2011, 2014-2016 Matijs van Zuijlen
 #
 # Alexandria is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

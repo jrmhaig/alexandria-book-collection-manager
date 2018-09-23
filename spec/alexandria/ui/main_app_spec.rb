@@ -23,10 +23,6 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 # break this up!
 
-describe CellRendererToggle do
-  it 'should work'
-end
-
 describe Gtk::ActionGroup do
   it 'should work'
 end

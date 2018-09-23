@@ -350,7 +350,7 @@ module Alexandria
               widget.grab_focus
               obj = widget.selection
               path = path.first
-              unless obj.path_is_selected?(path)
+              unless obj.path_is_selected(path)
                 widget.unselect_all
                 obj.select_path(path)
               end
@@ -359,7 +359,7 @@ module Alexandria
                 already_enabled = sel[2]
                 message = already_enabled ? _('Disable Provider') : _('Enable Provider')
                 @enable_item.label = message
-                GLib::Idle.add do
+                GLib.idle_add do
                   @enable_disable_providers_menu.popup(nil, nil, event.button, event.time)
                   false
                 end
@@ -375,7 +375,7 @@ module Alexandria
           selected_prov = @treeview_providers.selection.selected
           puts selected_prov.inspect
           if selected_prov
-            GLib::Idle.add do
+            GLib.idle_add do
               already_enabled = selected_prov[2]
               message = already_enabled ? _('Disable Provider') : _('Enable Provider')
               @enable_item.label = message

@@ -8,6 +8,7 @@ Gemfile.lock
 .yardoc/
 share/locale/
 share/omf/alexandria/*.omf
+share/alexandria/glade/*.glade~
 pkg/
 coverage/
 tmp/

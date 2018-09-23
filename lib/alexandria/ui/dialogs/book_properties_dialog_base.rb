@@ -51,7 +51,7 @@ module Alexandria
         @treeview_authors.append_column(col)
 
         setup_calendar_widgets
-        GLib::Timeout.add(150) do
+        GLib.timeout_add(GLib::PRIORITY_DEFAULT, 150) do
           @setup_finished = true
 
           false
@@ -133,7 +133,7 @@ module Alexandria
         @calendar_popup.hide_all
         @book_properties_dialog.modal = true
 
-        GLib::Timeout.add(150) do
+        GLib.timeout_add(GLib::PRIORITY_DEFAULT, 150) do
           # If we set @popup_displayed=false immediately, then a click
           # event on the primary icon of the Entry simultaneous with
           # the focus-out-event of the Calendar causes the Calendar to
