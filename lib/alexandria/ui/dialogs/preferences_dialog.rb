@@ -99,7 +99,7 @@ module Alexandria
         super(title: _('Preferences for %s') % provider.fullname,
               parent: parent,
               flags: :modal,
-              buttons: [[Gtk::Stock::CLOSE, :close]])
+              buttons: [[Gtk::STOCK_CLOSE, :close]])
 
         table = Gtk::Table.new(0, 0)
         fill_table(table, provider)
@@ -123,8 +123,8 @@ module Alexandria
         super(title: _('New Provider'),
               parent: parent,
               flags: :modal,
-              buttons: [[Gtk::Stock::CANCEL, Gtk::ResponseType::CANCEL]])
-        @add_button = add_button(Gtk::Stock::ADD,
+              buttons: [[Gtk::STOCK_CANCEL, Gtk::ResponseType::CANCEL]])
+        @add_button = add_button(Gtk::STOCK_ADD,
                                  Gtk::ResponseType::ACCEPT)
 
         instances = BookProviders.abstract_classes.map(&:new)
@@ -456,10 +456,10 @@ module Alexandria
                                  _('Are you sure you want to ' \
                                    'permanently delete the provider ' \
                                    "'%s'?") % provider.fullname,
-                                 Gtk::Stock::DIALOG_QUESTION,
-                                 [[Gtk::Stock::CANCEL,
+                                 Gtk::STOCK_DIALOG_QUESTION,
+                                 [[Gtk::STOCK_CANCEL,
                                    Gtk::ResponseType::CANCEL],
-                                  [Gtk::Stock::DELETE,
+                                  [Gtk::STOCK_DELETE,
                                    Gtk::ResponseType::OK]],
                                  _('If you continue, the provider and ' \
                                    'all of its preferences will be ' \

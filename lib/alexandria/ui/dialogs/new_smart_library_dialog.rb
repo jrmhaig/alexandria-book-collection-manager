@@ -13,8 +13,8 @@ module Alexandria
       def initialize(parent)
         super(parent)
 
-        add_buttons([Gtk::Stock::CANCEL, :cancel],
-                    [Gtk::Stock::NEW, :ok])
+        add_buttons([Gtk::STOCK_CANCEL, :cancel],
+                    [Gtk::STOCK_NEW, :ok])
 
         self.title = _('New Smart Library')
         # FIXME: Should accept just :cancel

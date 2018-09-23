@@ -258,8 +258,8 @@ module Alexandria
                                             Gtk::FileChooser::ACTION_OPEN,
                                             backend,
                                             [_('No Cover'), Gtk::ResponseType::REJECT],
-                                            [Gtk::Stock::CANCEL, Gtk::ResponseType::CANCEL],
-                                            [Gtk::Stock::OPEN, Gtk::ResponseType::ACCEPT])
+                                            [Gtk::STOCK_CANCEL, Gtk::ResponseType::CANCEL],
+                                            [Gtk::STOCK_OPEN, Gtk::ResponseType::ACCEPT])
         dialog.current_folder = @@latest_filechooser_directory
         response = dialog.run
         if response == Gtk::ResponseType::ACCEPT

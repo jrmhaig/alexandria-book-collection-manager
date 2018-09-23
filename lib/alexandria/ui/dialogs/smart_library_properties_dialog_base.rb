@@ -31,7 +31,7 @@ module Alexandria
         @dialog = Gtk::Dialog.new(title: '',
                                   parent: parent,
                                   flags: :modal,
-                                  buttons: [[Gtk::Stock::HELP, :help]])
+                                  buttons: [[Gtk::STOCK_HELP, :help]])
         super(@dialog)
 
         self.window_position = :center
@@ -86,8 +86,8 @@ module Alexandria
         dialog = AlertDialog.new(
           @dialog,
           _('Empty or conflictive condition'),
-          Gtk::Stock::DIALOG_QUESTION,
-          [[Gtk::Stock::CANCEL, Gtk::ResponseType::CANCEL],
+          Gtk::STOCK_DIALOG_QUESTION,
+          [[Gtk::STOCK_CANCEL, Gtk::ResponseType::CANCEL],
            [_('_Save However'), Gtk::ResponseType::YES]],
           _('This smart library contains one or more conditions ' \
             'which are empty or conflict with each other. This is ' \
@@ -144,7 +144,7 @@ module Alexandria
         value_entry = Gtk::Entry.new
 
         date_entry = Gtk::Entry.new
-        date_entry.primary_icon_name = Gtk::Stock::EDIT
+        date_entry.primary_icon_name = Gtk::STOCK_EDIT
         date_entry.primary_icon_activatable = true
         date_entry.signal_connect('icon-press') do |entry, primary, _icon|
           display_calendar_popup(entry) if primary.nick == 'primary'
@@ -158,14 +158,14 @@ module Alexandria
 
         add_button = Gtk::Button.new(label: '')
         add_button.remove(add_button.children.first)
-        add_button << Gtk::Image.new(stock: Gtk::Stock::ADD,
+        add_button << Gtk::Image.new(stock: Gtk::STOCK_ADD,
                                      size: Gtk::IconSize::BUTTON)
 
         add_button.signal_connect('clicked') { insert_new_rule }
 
         remove_button = Gtk::Button.new(label: '')
         remove_button.remove(remove_button.children.first)
-        remove_button << Gtk::Image.new(stock: Gtk::Stock::REMOVE,
+        remove_button << Gtk::Image.new(stock: Gtk::STOCK_REMOVE,
                                         size: Gtk::IconSize::BUTTON)
 
         remove_button.signal_connect('clicked') do |_button|

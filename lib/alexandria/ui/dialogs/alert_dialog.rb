@@ -48,8 +48,8 @@ module Alexandria
 
     class ErrorDialog < AlertDialog
       def initialize(parent, title, message = nil)
-        super(parent, title, Gtk::Stock::DIALOG_ERROR,
-              [[Gtk::Stock::OK, :ok]], message)
+        super(parent, title, Gtk::STOCK_DIALOG_ERROR,
+              [[Gtk::STOCK_OK, :ok]], message)
         # FIXME: Should accept just :ok
         self.default_response = Gtk::ResponseType::OK
       end

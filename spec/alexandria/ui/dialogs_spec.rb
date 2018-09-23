@@ -142,8 +142,8 @@ describe Alexandria::UI::AlertDialog do
   it 'should work' do
     parent = Gtk::Window.new :toplevel
     described_class.new(parent, 'Hello',
-                        Gtk::Stock::DIALOG_QUESTION,
-                        [[Gtk::Stock::CANCEL, :cancel]], 'Hi there')
+                        Gtk::STOCK_DIALOG_QUESTION,
+                        [[Gtk::STOCK_CANCEL, :cancel]], 'Hi there')
   end
 end
 

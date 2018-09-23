@@ -21,8 +21,8 @@ module Alexandria
 
       def initialize(parent, message)
         super(parent, _('Error while importing'),
-              Gtk::Stock::DIALOG_QUESTION,
-              [[Gtk::Stock::CANCEL, Gtk::ResponseType::CANCEL],
+              Gtk::STOCK_DIALOG_QUESTION,
+              [[Gtk::STOCK_CANCEL, Gtk::ResponseType::CANCEL],
                [_('_Continue'), Gtk::ResponseType::OK]],
               message)
         puts "Opened SkipEntryDialog #{inspect}" if $DEBUG
@@ -51,8 +51,8 @@ module Alexandria
         puts 'ImportDialog opened.' if $DEBUG
         @destroyed = false
         @running = false
-        add_button(Gtk::Stock::HELP, Gtk::ResponseType::HELP)
-        add_button(Gtk::Stock::CANCEL, Gtk::ResponseType::CANCEL)
+        add_button(Gtk::STOCK_HELP, Gtk::ResponseType::HELP)
+        add_button(Gtk::STOCK_CANCEL, Gtk::ResponseType::CANCEL)
         import_button = add_button(_('_Import'),
                                    Gtk::ResponseType::ACCEPT)
         import_button.sensitive = false
