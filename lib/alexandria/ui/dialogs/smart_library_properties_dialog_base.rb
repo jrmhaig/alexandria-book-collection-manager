@@ -158,15 +158,13 @@ module Alexandria
 
         add_button = Gtk::Button.new(label: '')
         add_button.remove(add_button.children.first)
-        add_button << Gtk::Image.new(stock: Gtk::STOCK_ADD,
-                                     size: Gtk::IconSize::BUTTON)
+        add_button << Gtk::Image.new_from_icon_name(Gtk::STOCK_ADD, :button)
 
         add_button.signal_connect('clicked') { insert_new_rule }
 
         remove_button = Gtk::Button.new(label: '')
         remove_button.remove(remove_button.children.first)
-        remove_button << Gtk::Image.new(stock: Gtk::STOCK_REMOVE,
-                                        size: Gtk::IconSize::BUTTON)
+        remove_button << Gtk::Image.new_from_icon_name(Gtk::STOCK_REMOVE, :button)
 
         remove_button.signal_connect('clicked') do |_button|
           idx = @rules_box.children.index(rule_box)
