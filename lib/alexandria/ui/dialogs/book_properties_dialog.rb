@@ -72,9 +72,10 @@ module Alexandria
         end
 
         book.authors.each do |author|
-          iter = @treeview_authors.model.append
-          iter[0] = author
-          iter[1] = true
+          model = @treeview_authors.model
+          iter = model.append
+          model.set_value iter, 0, author
+          model.set_value iter, 1, true
         end
 
         buffer = Gtk::TextBuffer.new
