@@ -52,7 +52,7 @@ module Alexandria
         end
 
         renderer = Gtk::CellRendererPixbuf.new
-        col = Gtk::TreeViewColumn.new('', renderer)
+        col = Gtk::TreeViewColumn.new_with_attributes('', renderer)
         col.set_cell_data_func(renderer) do |_column, cell, _model, iter|
           pixbuf = iter[2]
           max_height = 25
@@ -66,8 +66,8 @@ module Alexandria
         end
         @treeview_results.append_column(col)
 
-        col = Gtk::TreeViewColumn.new('', Gtk::CellRendererText.new,
-                                      text: 0)
+        col = Gtk::TreeViewColumn.new_with_attributes('', Gtk::CellRendererText.new,
+                                                      text: 0)
         @treeview_results.append_column(col)
 
         @combo_search.active = 0

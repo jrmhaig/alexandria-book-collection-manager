@@ -45,9 +45,9 @@ module Alexandria
         renderer.signal_connect('editing-started') do |_cell, entry, _path_string|
           entry.complete_authors
         end
-        col = Gtk::TreeViewColumn.new('', renderer,
-                                      text: 0,
-                                      editable: 1)
+        col = Gtk::TreeViewColumn.new_with_attributes('', renderer,
+                                                      text: 0,
+                                                      editable: 1)
         @treeview_authors.append_column(col)
 
         setup_calendar_widgets
@@ -60,7 +60,7 @@ module Alexandria
 
       def setup_calendar_widgets
         @popup_displayed = false
-        @calendar_popup = Gtk::Window.new # Gtk::Window::POPUP)
+        @calendar_popup = Gtk::Window.new :popup
         # @calendar_popup.modal = true
         @calendar_popup.decorated = false
         @calendar_popup.skip_taskbar_hint = true

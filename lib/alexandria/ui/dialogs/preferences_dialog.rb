@@ -256,7 +256,7 @@ module Alexandria
         end
 
         # renderer.active = true
-        column = Gtk::TreeViewColumn.new('Enabled', renderer)
+        column = Gtk::TreeViewColumn.new_with_attributes('Enabled', renderer)
         column.set_cell_data_func(renderer) do |_col, rndr, _mod, iter|
           value = iter[2]
           rndr.active = value
@@ -265,8 +265,7 @@ module Alexandria
         @treeview_providers.append_column(column)
 
         renderer = Gtk::CellRendererText.new
-        column = Gtk::TreeViewColumn.new('Providers',
-                                         renderer)
+        column = Gtk::TreeViewColumn.new_with_attributes('Providers', renderer)
         # :text => 0)
         column.set_cell_data_func(renderer) do |_col, rndr, _mod, iter|
           rndr.markup = iter[0]
