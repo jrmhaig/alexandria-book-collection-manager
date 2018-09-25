@@ -31,7 +31,7 @@ module Alexandria
 
         self.title = _("Properties for '%s'") % smart_library.name
         # FIXME: Should accept just :cancel
-        self.default_response = Gtk::ResponseType::CANCEL
+        self.set_default_response :cancel
       end
 
       def acquire

@@ -464,7 +464,7 @@ module Alexandria
                                  _('If you continue, the provider and ' \
                                    'all of its preferences will be ' \
                                    'permanently deleted.'))
-        dialog.default_response = Gtk::ResponseType::CANCEL
+        dialog.set_default_response :cancel
         dialog.show_all
         if dialog.run == Gtk::ResponseType::OK
           provider.remove

@@ -93,7 +93,7 @@ module Alexandria
             'which are empty or conflict with each other. This is ' \
             'likely to result in never matching a book. Are you ' \
             'sure you want to save this library?'))
-        dialog.default_response = Gtk::ResponseType::CANCEL
+        dialog.set_default_response :cancel
         dialog.show_all
         confirmed = dialog.run == Gtk::ResponseType::YES
         dialog.destroy
