@@ -86,7 +86,7 @@ module Alexandria
 
         pbar = Gtk::ProgressBar.new
         pbar.show_text = true
-        child.pack_start(pbar, expand: false)
+        child.pack_start(pbar, false, false, 0)
       end
 
       def acquire

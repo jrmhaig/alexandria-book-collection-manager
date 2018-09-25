@@ -29,24 +29,24 @@ module Alexandria
 
         image = Gtk::Image.new_from_icon_name(stock_icon, :dialog)
         image.set_alignment(0.5, 0)
-        hbox.pack_start(image)
+        hbox.pack_start(image, false, false, 0)
 
         vbox = Gtk::Box.new(:vertical, 6)
         vbox.homogeneous = false
-        hbox.pack_start(vbox)
+        hbox.pack_start(vbox, false, false, 0)
 
         label = Gtk::Label.new
         label.set_alignment(0, 0)
         label.wrap = label.selectable = true
         label.markup = "<b><big>#{title}</big></b>"
-        vbox.pack_start(label)
+        vbox.pack_start(label, false, false, 0)
 
         if message
           label = Gtk::Label.new
           label.set_alignment(0, 0)
           label.wrap = label.selectable = true
           label.markup = message.strip
-          vbox.pack_start(label)
+          vbox.pack_start(label, false, false, 0)
         end
       end
     end

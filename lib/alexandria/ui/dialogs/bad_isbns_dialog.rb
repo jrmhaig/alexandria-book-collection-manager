@@ -19,10 +19,10 @@ module Alexandria
 
         isbn_container = Gtk::Box.new :horizontal
         the_vbox = children.first
-        the_vbox.pack_start(isbn_container)
+        the_vbox.pack_start(isbn_container, false, false, 0)
         the_vbox.reorder_child(isbn_container, 3)
         scrolley = Gtk::ScrolledWindow.new
-        isbn_container.pack_start(scrolley)
+        isbn_container.pack_start(scrolley, false, false, 0)
         textview = Gtk::TextView.new(Gtk::TextBuffer.new)
         textview.editable = false
         textview.cursor_visible = false
