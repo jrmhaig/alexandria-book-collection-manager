@@ -44,8 +44,8 @@ module Alexandria
         @combo_libraries.populate_with_libraries(libraries,
                                                  @selected_library)
 
-        @treeview_results.model = Gtk::ListStore.new(String, String,
-                                                     GdkPixbuf::Pixbuf)
+        @treeview_results.model = Gtk::ListStore.new([GObject::TYPE_STRING, GObject::TYPE_STRING,
+                                                      GdkPixbuf::Pixbuf.gtype])
         @treeview_results.selection.mode = :multiple
         @treeview_results.selection.signal_connect('changed') do
           @button_add.sensitive = true

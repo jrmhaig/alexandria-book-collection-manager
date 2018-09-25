@@ -237,7 +237,7 @@ module Alexandria
           end
         end
 
-        model = Gtk::ListStore.new(String, String, TrueClass, Integer)
+        model = Gtk::ListStore.new([GObject::TYPE_STRING, GObject::TYPE_STRING, GObject::TYPE_BOOLEAN, GObject::TYPE_INT])
         @treeview_providers.model = model
         reload_providers
         model.signal_connect_after('row-changed') { update_priority }
@@ -312,7 +312,7 @@ module Alexandria
       end
 
       def setup_barcode_scanner_tab
-        @scanner_device_model = Gtk::ListStore.new(String, String)
+        @scanner_device_model = Gtk::ListStore.new([GObject::TYPE_STRING, GObject::TYPE_STRING])
         chosen_scanner_name = Preferences.instance.barcode_scanner
         index = 0
         @scanner_device_type.model = @scanner_device_model

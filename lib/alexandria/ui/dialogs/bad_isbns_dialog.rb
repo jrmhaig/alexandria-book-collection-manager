@@ -17,7 +17,7 @@ module Alexandria
                                         message)
         super(dialog)
 
-        isbn_container = Gtk::Box.new :horizontal
+        isbn_container = Gtk::Box.new :horizontal, 0
         the_vbox = children.first
         the_vbox.pack_start(isbn_container, false, false, 0)
         the_vbox.reorder_child(isbn_container, 3)

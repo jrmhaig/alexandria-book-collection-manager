@@ -39,7 +39,7 @@ module Alexandria
         self.border_width = 4
         child.border_width = 12
 
-        main_box = Gtk::Box.new :vertical
+        main_box = Gtk::Box.new :vertical, 0
         main_box.border_width = 4
         main_box.spacing = 8
 
@@ -47,10 +47,10 @@ module Alexandria
 
         @smart_library_rules = []
 
-        @rules_header_box = Gtk::Box.new :horizontal
+        @rules_header_box = Gtk::Box.new :horizontal, 0
         @rules_header_box.spacing = 2
 
-        @rules_box = Gtk::Box.new :vertical
+        @rules_box = Gtk::Box.new :vertical, 0
         @rules_box.spacing = 8
         @rules_box.border_width = 8
 
@@ -135,7 +135,7 @@ module Alexandria
       end
 
       def insert_new_rule(rule = nil)
-        rule_box = Gtk::Box.new :horizontal
+        rule_box = Gtk::Box.new :horizontal, 0
         rule_box.spacing = 8
 
         left_operand_combo = Gtk::ComboBoxText.new
