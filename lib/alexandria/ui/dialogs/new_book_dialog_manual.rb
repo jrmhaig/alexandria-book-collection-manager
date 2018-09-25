@@ -24,7 +24,7 @@ module Alexandria
         cancel_button = Gtk::Button.new_from_stock(Gtk::STOCK_CANCEL)
         cancel_button.signal_connect('clicked') { on_cancel }
         cancel_button.show
-        @button_box << cancel_button
+        @button_box.add cancel_button
 
         add_button = Gtk::Button.new_from_stock(Gtk::STOCK_ADD)
         add_button.signal_connect('clicked') { on_add }
