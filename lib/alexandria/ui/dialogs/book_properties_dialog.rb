@@ -79,7 +79,7 @@ module Alexandria
         end
 
         buffer = Gtk::TextBuffer.new
-        buffer.text = (book.notes || '')
+        buffer.set_text (book.notes || ''), -1
         @textview_notes.buffer = buffer
 
         @library = library

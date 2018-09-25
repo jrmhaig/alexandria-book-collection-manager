@@ -361,8 +361,8 @@ module Alexandria
         ]
         raise 'out of range' if rating < 0 || rating > images.length
 
-        images[0..rating - 1].each { |x| x.pixbuf = Icons::STAR_SET }
-        images[rating..-1].each { |x| x.pixbuf = Icons::STAR_UNSET }
+        images[0..rating - 1].each { |x| x.set_from_pixbuf Icons::STAR_SET }
+        images[rating..-1].each { |x| x.set_from_pixbuf Icons::STAR_UNSET }
         @current_rating = rating
       end
 
@@ -373,7 +373,7 @@ module Alexandria
           # that's why we make a copy.
           pixbuf = pixbuf.scale(COVER_MAXWIDTH, new_height)
         end
-        @image_cover.pixbuf = pixbuf
+        @image_cover.set_from_pixbuf pixbuf
       end
 
       def loaned_since=(time)
