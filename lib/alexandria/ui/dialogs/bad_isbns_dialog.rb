@@ -23,7 +23,7 @@ module Alexandria
         the_vbox.reorder_child(isbn_container, 3)
         scrolley = Gtk::ScrolledWindow.new
         isbn_container.pack_start(scrolley, false, false, 0)
-        textview = Gtk::TextView.new(Gtk::TextBuffer.new)
+        textview = Gtk::TextView.new_with_buffer(Gtk::TextBuffer.new)
         textview.editable = false
         textview.cursor_visible = false
         scrolley.add(textview)
