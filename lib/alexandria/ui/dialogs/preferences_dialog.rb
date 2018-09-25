@@ -474,7 +474,7 @@ module Alexandria
         dialog.destroy
       end
 
-      def on_column_toggled(checkbutton)
+      def on_column_toggled(checkbutton, _user_data)
         raise if @cols[checkbutton].nil?
 
         Preferences.instance.send("#{@cols[checkbutton]}=",
