@@ -334,7 +334,7 @@ module Alexandria
       def setup_enable_disable_popup
         # New Enable/Disable pop-up menu...
         @enable_disable_providers_menu = Gtk::Menu.new
-        @enable_item = Gtk::MenuItem.new(label: _('Disable Provider'))
+        @enable_item = Gtk::MenuItem.new_with_label(_('Disable Provider'))
         @enable_item.signal_connect('activate') {
           prov = selected_provider
           prov.toggle_enabled
@@ -474,10 +474,11 @@ module Alexandria
       end
 
       def on_column_toggled(checkbutton, _user_data)
-        raise if @cols[checkbutton].nil?
+        _, value = @cols.find { |k, _v| k.label = checkbutton.label }
+        raise if value.nil?
 
-        Preferences.instance.send("#{@cols[checkbutton]}=",
-                                  checkbutton.active?)
+        Preferences.instance.send("#{value}=",
+                                  checkbutton.active)
 
         @changed_block.call
       end
@@ -504,14 +505,10 @@ module Alexandria
         model.clear
         BookProviders.each_with_index do |x, index|
           iter = model.append
-          iter[0] = if x.enabled
-                      x.fullname
-                    else
-                      "<i>#{x.fullname}</i>"
-                    end
-          iter[1] = x.name
-          iter[2] = x.enabled
-          iter[3] = index
+          model.set_value iter, 0, x.enabled ? x.fullname : "<i>#{x.fullname}</i>"
+          model.set_value iter, 1, x.name
+          model.set_value iter, 2, x.enabled
+          model.set_value iter, 3, index
         end
       end
 
