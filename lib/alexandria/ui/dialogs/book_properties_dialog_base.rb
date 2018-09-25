@@ -240,15 +240,15 @@ module Alexandria
         self.rating = 0
       end
 
-      def own_toggled
-        @checkbutton_want.inconsistent = if @checkbutton_own.active?
+      def own_toggled(_check_button, _user_data)
+        @checkbutton_want.inconsistent = if @checkbutton_own.active
                                            true
                                          else
                                            false
                                          end
       end
 
-      def want_toggled; end
+      def want_toggled(_check_button, _user_data); end
 
       @@latest_filechooser_directory = ENV['HOME']
       def on_change_cover
