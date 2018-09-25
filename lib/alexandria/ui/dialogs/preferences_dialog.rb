@@ -437,12 +437,15 @@ module Alexandria
       end
 
       def on_scanner_device_type(_combo, _user_data)
-        iter = @scanner_device_type.active_iter
-        Preferences.instance.barcode_scanner = iter[1] if iter && iter[1]
+        success, iter = @scanner_device_type.active_iter
+        if success
+          value = @scanner_device_type.model.get_value iter, 1
+          Preferences.instance.barcode_scanner = value if value
+        end
       end
 
-      def on_use_scanning_sound(checkbox)
-        Preferences.instance.play_scanning_sound = checkbox.active?
+      def on_use_scanning_sound(checkbox, _user_data)
+        Preferences.instance.play_scanning_sound = checkbox.active
       end
 
       def on_use_scan_sound(checkbox)
