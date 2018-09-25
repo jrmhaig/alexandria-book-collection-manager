@@ -436,7 +436,7 @@ module Alexandria
         end
       end
 
-      def on_scanner_device_type(_combo)
+      def on_scanner_device_type(_combo, _user_data)
         iter = @scanner_device_type.active_iter
         Preferences.instance.barcode_scanner = iter[1] if iter && iter[1]
       end
