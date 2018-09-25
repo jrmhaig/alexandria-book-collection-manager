@@ -73,7 +73,7 @@ module Alexandria
           filters[filefilter] = filter
         end
 
-        signal_connect('selection_changed') do
+        signal_connect('selection-changed') do
           import_button.sensitive = filename && File.file?(filename)
         end
 

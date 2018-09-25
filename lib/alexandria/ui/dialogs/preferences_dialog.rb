@@ -321,8 +321,8 @@ module Alexandria
 
         Alexandria::Scanners.each_scanner do |scanner|
           iter = @scanner_device_model.append
-          iter[0] = scanner.display_name
-          iter[1] = scanner.name
+          @scanner_device_model.set_value iter, 0, scanner.display_name
+          @scanner_device_model.set_value iter, 1, scanner.name
           @scanner_device_type.active = index if chosen_scanner_name == scanner.name
           index += 1
         end
@@ -343,7 +343,7 @@ module Alexandria
         @enable_disable_providers_menu.append(@enable_item)
         @enable_disable_providers_menu.show_all
 
-        @treeview_providers.signal_connect('button_press_event') do |widget, event|
+        @treeview_providers.signal_connect('button-press-event') do |widget, event|
           if event_is_right_click(event)
             if (path = widget.get_path_at_pos(event.x, event.y))
               widget.grab_focus
@@ -370,7 +370,7 @@ module Alexandria
         end
 
         # Popup the menu on Shift-F10
-        @treeview_providers.signal_connect('popup_menu') {
+        @treeview_providers.signal_connect('popup-menu') {
           selected_prov = @treeview_providers.selection.selected
           puts selected_prov.inspect
           if selected_prov
@@ -529,15 +529,15 @@ module Alexandria
 
       def sensitize_providers
         model = @treeview_providers.model
-        sel_iter = @treeview_providers.selection.selected
-        if sel_iter.nil?
+        result, _model, sel_iter = @treeview_providers.selection.selected
+        if !result
           # No selection, we are probably called by ListStore#clear
           @button_prov_up.sensitive = false
           @button_prov_down.sensitive = false
           @button_prov_setup.sensitive = false
           @button_prov_remove.sensitive = false
         else
-          last_iter = model.get_iter((BookProviders.length - 1).to_s)
+          _, last_iter = model.get_iter_from_string (BookProviders.length - 1).to_s
           @button_prov_up.sensitive = sel_iter != model.iter_first
           @button_prov_down.sensitive = sel_iter != last_iter
           provider = BookProviders.find { |x| x.name == sel_iter[1] }
