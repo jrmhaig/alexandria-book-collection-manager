@@ -193,7 +193,7 @@ module Alexandria
          :treeview_authors]
       end
 
-      def on_title_changed
+      def on_title_changed(_entry, _user_data)
         title = @entry_title.text.strip
         @book_properties_dialog.title = if title.empty?
                                           _('Properties')
