@@ -29,12 +29,12 @@ module Alexandria
         add_button = Gtk::Button.new_from_stock(Gtk::STOCK_ADD)
         add_button.signal_connect('clicked') { on_add }
         add_button.show
-        @button_box << add_button
+        @button_box.add add_button
 
         help_button = Gtk::Button.new_from_stock(Gtk::STOCK_HELP)
         help_button.signal_connect('clicked') { on_help }
         help_button.show
-        @button_box << help_button
+        @button_box.add help_button
         @button_box.set_child_secondary(help_button, true)
 
         self.rating = Book::DEFAULT_RATING
