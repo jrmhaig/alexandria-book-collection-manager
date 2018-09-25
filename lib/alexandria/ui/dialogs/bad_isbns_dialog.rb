@@ -10,11 +10,11 @@ module Alexandria
     # be used for on_load library conversions.
     class BadIsbnsDialog < SimpleDelegator
       def initialize(parent, message, list)
-        dialog = Gtk::MessageDialog.new(parent: parent,
-                                        flags: :modal,
-                                        type: :warning,
-                                        buttons: :close,
-                                        message: message)
+        dialog = Gtk::MessageDialog.new(parent,
+                                        :modal,
+                                        :warning,
+                                        :close,
+                                        message)
         super(dialog)
 
         isbn_container = Gtk::Box.new :horizontal
