@@ -309,9 +309,9 @@ module Alexandria
           s += " (#{book.edition}, #{book.publisher})" if similar_books.length > 1
           log.info { format('Copying %s into tree view.', book.title) }
           iter = model.append
-          iter[0] = s
-          iter[1] = book.ident
-          iter[2] = Icons::BOOK
+          model.set_value(iter, 0, s)
+          model.set_value(iter, 1, book.ident)
+          model.set_value(iter, 2, Icons::BOOK)
         end
       end
 
