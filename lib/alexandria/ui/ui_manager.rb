@@ -12,7 +12,7 @@ module GLib
   setup_method :idle_add
 
   # FIXME: Move to gir_ffi
-  def self.idle_add_with_override(priority=GLib::PRIORITY_DEFAULT_IDLE, &block)
+  def self.idle_add_with_override(priority = GLib::PRIORITY_DEFAULT_IDLE, &block)
     idle_add_without_override priority, &block
   end
 
