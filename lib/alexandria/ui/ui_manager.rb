@@ -223,7 +223,7 @@ module Alexandria
 
       def setup_menus
         @menubar = @uimanager.get_widget('/MainMenubar')
-        @vbox1.add_with_properties(@menubar,  position: 0, expand: false, fill: false)
+        @vbox1.add_with_properties(@menubar, position: 0, expand: false, fill: false)
       end
 
       def setup_popups
