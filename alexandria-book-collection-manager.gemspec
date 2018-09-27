@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ['--main', 'README.md']
 
   s.add_runtime_dependency('gettext', ['~> 3.1'])
-  s.add_runtime_dependency('gir_ffi', ['~> 0.14.0'])
+  s.add_runtime_dependency('gir_ffi', ['~> 0.14.1'])
   s.add_runtime_dependency('gir_ffi-gtk', ['~> 0.14.0'])
   s.add_runtime_dependency('gir_ffi-gst', ['0.0.11'])
   s.add_runtime_dependency('hpricot', ['~> 0.8.5'])
