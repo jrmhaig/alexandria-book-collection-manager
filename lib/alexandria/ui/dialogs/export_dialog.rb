@@ -20,7 +20,7 @@ module Alexandria
               _("A file named '%s' already exists.  Do you want " \
                 'to replace it with the one you are generating?') % filename)
         # FIXME: Should accept just :cancel
-        self.set_default_response :cancel
+        set_default_response :cancel
       end
 
       def erase?
