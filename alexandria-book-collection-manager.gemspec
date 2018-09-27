@@ -45,9 +45,9 @@ Gem::Specification.new do |s|
   s.rdoc_options = ['--main', 'README.md']
 
   s.add_runtime_dependency('gettext', ['~> 3.1'])
-  s.add_runtime_dependency('gir_ffi', ['~> 0.13.1'])
-  s.add_runtime_dependency('gir_ffi-gtk', ['~> 0.13.1'])
-  s.add_runtime_dependency('gir_ffi-gst', ['0.0.10'])
+  s.add_runtime_dependency('gir_ffi', ['~> 0.14.0'])
+  s.add_runtime_dependency('gir_ffi-gtk', ['~> 0.14.0'])
+  s.add_runtime_dependency('gir_ffi-gst', ['0.0.11'])
   s.add_runtime_dependency('hpricot', ['~> 0.8.5'])
   s.add_runtime_dependency('htmlentities', ['~> 4.3'])
   s.add_runtime_dependency('image_size', ['~> 2.0'])
@@ -57,7 +57,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('minitest', ['~> 5.0'])
   s.add_development_dependency('rake', ['~> 12.0'])
   s.add_development_dependency('rspec', ['~> 3.0'])
-  s.add_development_dependency('atspi_app_driver', ['0.4.0'])
+  s.add_development_dependency('atspi_app_driver', ['0.5.0'])
 
   s.require_paths = ['lib']
 end
