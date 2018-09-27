@@ -26,7 +26,6 @@ module Alexandria
       complete(Alexandria::UI::CompletionModels::TITLE)
     end
 
-
     def complete_authors
       complete(Alexandria::UI::CompletionModels::AUTHOR)
     end
