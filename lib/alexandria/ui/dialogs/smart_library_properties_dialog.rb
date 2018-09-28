@@ -26,11 +26,10 @@ module Alexandria
       def initialize(parent, smart_library)
         super(parent)
 
-        add_buttons([Gtk::STOCK_CANCEL, :cancel],
-                    [Gtk::STOCK_SAVE, :ok])
+        add_button Gtk::STOCK_CANCEL, :cancel
+        add_button Gtk::STOCK_SAVE, :ok
 
-        self.title = _("Properties for '%s'") % smart_library.name
-        # FIXME: Should accept just :cancel
+        set_title _("Properties for '%s'") % smart_library.name
         set_default_response :cancel
       end
 
