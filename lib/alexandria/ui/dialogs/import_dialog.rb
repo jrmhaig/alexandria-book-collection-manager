@@ -80,7 +80,7 @@ module Alexandria
         # before adding the (hidden) progress bar, we must re-set the
         # packing of the button box (currently packed at the end),
         # because the progressbar will be *after* the button box.
-        box = get_children.first
+        box = dialog.content_area
         buttonbox = box.children.to_a.last
         expand, fill, padding, pack_type = box.query_child_packing buttonbox
         box.set_child_packing(buttonbox, expand, fill, padding, :start)
