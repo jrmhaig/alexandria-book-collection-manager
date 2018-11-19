@@ -82,7 +82,7 @@ module Alexandria
         # because the progressbar will be *after* the button box.
         box = dialog.content_area
         buttonbox = box.children.to_a.last
-        expand, fill, padding, pack_type = box.query_child_packing buttonbox
+        expand, fill, padding, _pack_type = box.query_child_packing buttonbox
         box.set_child_packing(buttonbox, expand, fill, padding, :start)
         box.reorder_child(buttonbox, 1)
 
