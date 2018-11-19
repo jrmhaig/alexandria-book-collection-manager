@@ -358,7 +358,8 @@ module Alexandria
           found, *path = widget.get_path_at_pos(event.x, event.y)
           if found
             @clicking_on_sidepane = true
-            obj, path = [widget.selection, path.first]
+            obj = widget.selection
+            path = path.first
             obj.select_path(path)
             sensitize_library selected_library
           end
