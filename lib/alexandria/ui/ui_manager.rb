@@ -17,8 +17,8 @@ module GLib
   end
 
   class << self
-    alias_method :idle_add_without_override, :idle_add
-    alias_method :idle_add, :idle_add_with_override
+    alias idle_add_without_override idle_add
+    alias idle_add idle_add_with_override
   end
 end
 
