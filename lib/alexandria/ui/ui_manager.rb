@@ -757,8 +757,11 @@ module Alexandria
         @model.set_value(iter, Columns::EDITION, book.edition)
         @model.set_value(iter, Columns::NOTES, (book.notes || ''))
         @model.set_value(iter, Columns::LOANED_TO, (book.loaned_to || ''))
+
+        # ascending order is the default
         rating = (book.rating || Book::DEFAULT_RATING)
-        @model.set_value(iter, Columns::RATING, Book::MAX_RATING_STARS - rating) # ascending order is the default
+        @model.set_value(iter, Columns::RATING, Book::MAX_RATING_STARS - rating)
+
         @model.set_value(iter, Columns::OWN, book.own?)
         @model.set_value(iter, Columns::REDD, book.redd?)
         @model.set_value(iter, Columns::WANT, book.want?)
