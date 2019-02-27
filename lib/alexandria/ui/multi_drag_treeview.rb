@@ -46,21 +46,19 @@ module Alexandria
     end
 
     # FIXME: Don't override this method.
-    def enable_model_drag_source(start_button_mask, targets, actions)
+    # FIXME: Re-enable or re-implement
+    def xx_enable_model_drag_source(start_button_mask, targets, actions)
       super
 
-      # FIXME: Re-enable or re-implement
-      if false
-        @context = Context.new
-        @context.source_start_button_mask = start_button_mask
-        @context.source_targets = Gtk::TargetList.new(entries)
-        @context.source_actions = actions
+      @context = Context.new
+      @context.source_start_button_mask = start_button_mask
+      @context.source_targets = Gtk::TargetList.new(entries)
+      @context.source_actions = actions
 
-        @context.button_press_handler =
-          signal_connect('button-press-event') do |_widget, event, _data|
-            button_press_event(event)
-          end
-      end
+      @context.button_press_handler =
+        signal_connect('button-press-event') do |_widget, event, _data|
+          button_press_event(event)
+        end
     end
 
     def drag_context
