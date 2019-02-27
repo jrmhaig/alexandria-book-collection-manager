@@ -543,7 +543,7 @@ module Alexandria
           @button_prov_setup.sensitive = false
           @button_prov_remove.sensitive = false
         else
-          _, last_iter = model.get_iter_from_string (BookProviders.length - 1).to_s
+          _, last_iter = model.get_iter_from_string((BookProviders.length - 1).to_s)
           @button_prov_up.sensitive = sel_iter != model.iter_first
           @button_prov_down.sensitive = sel_iter != last_iter
           provider = BookProviders.find { |x| x.name == sel_iter[1] }
